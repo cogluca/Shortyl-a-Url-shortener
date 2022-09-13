@@ -1,10 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+
+        .nav-bar {
+            display: flex;
+            width: 100%;
+            flex-flow: wrap;
+            flex-direction: row;
+            justify-content: space-evenly;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .left-nav-container {
+            display: flex;
+            flex-flow: row;
+            justify-items: center;
+            gap: 2rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            flex-flow: row wrap;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .sign-in {
+            list-style-type: none;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: start;
+        }
+
+        nav li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            color: hsl(228, 45%, 44%);
+        }
+
+        .button {
+            background-color:hsl(228, 45%, 44%);
+            padding: 0.3rem;
+            border-radius: 8px;
+        }
+        
+        @media (min-width: 850px) {
+            nav {
+                max-width: 1200px;
+                margin: 0 auto
+            }
+        }
+
+    </style>
 </head>
 <body>
+<nav class="nav-bar">
+    <div class="left-nav-container">
+        <a href="index.html"> <img src="images/logo.svg" alt="Website Logo"/></a>
+        <ul class="menu-items">
+            <li>
+                <a href="index.html">Features</a>
+            </li>
+            <li>
+                <a href="index.html">Pricing</a>
+            </li>
+            <li>
+                <a href="index.html">Resources</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="sign-in">
+        <li>
+            <a href="index.html">Login</a>
+        </li>
+        <li>
+           <a class="button" href="index.html"> Signup </a>
+        </li>
+    </ul>
+</nav>
 
+<div class="body">
+
+
+
+
+</div>
+
+<div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+</div>
 </body>
 </html>
