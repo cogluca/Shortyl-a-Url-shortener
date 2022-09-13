@@ -44,6 +44,7 @@
             flex-flow: row wrap;
             display: flex;
             gap: 1rem;
+            align-items: center;
         }
 
         .sign-in {
@@ -63,9 +64,10 @@
         }
 
         .button {
-            background-color:hsl(228, 45%, 44%);
+            background-color:turquoise;
             padding: 0.3rem;
             border-radius: 8px;
+            color: white;
         }
         
         @media (min-width: 850px) {
@@ -73,6 +75,64 @@
                 max-width: 1200px;
                 margin: 0 auto
             }
+        }
+
+        .body {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            column-gap: 20px;
+            row-gap: 40px;
+            height: 100%;
+            /*noinspection CssInvalidPropertyValue*/
+            background-color: linear-gradient(to left, rgb(255,255,255) 50%, rgb(144,144,144) 50%);
+        }
+
+        .main-section-row-hero-text{
+            align-content: center;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        .main-section-row-hero-text h1 {
+            text-align: center;
+            font-size: 80px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-section-row-hero-text p {
+            margin: 0;
+        }
+
+        .link-shortener-text-area {
+            display: flex;
+            background-image: url("./images/bg-boost-desktop.svg");
+            background-color: rebeccapurple;
+            padding: 30px;
+            justify-content: space-evenly;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-auto-flow: column;
+            margin-left: 20%;
+            margin-right: 20%;
+            border-radius: 10px;
+        }
+
+        .link-shortener-text-area input {
+            border: none;
+            border-radius: 20px;
+        }
+
+        .link-shortener-text-area button {
+            border-radius: 10px;
+            background-color: darkturquoise;
+            color: white;
+        }
+
+        .process-explanation {
+            justify-content: center;
+            text-align: center;
         }
 
     </style>
@@ -103,12 +163,31 @@
     </ul>
 </nav>
 
-<div class="body">
+<section class="body">
+    <div class="main-section-row-hero-text">
+        <h1>More than just <br> shorter link</h1>
+        <p>Build your brand's recognitionand get detailed insights on how your links are performing</p>
+    </div>
+    <div class="main-section-row-working">
+        <img src="images/illustration-working.svg"/>
+    </div>
+    <div class="link-shortener-text-area">
+        <textarea>Shorten link here</textarea>
+        <button>Shorten</button>
+    </div>
+</section>
+
+<section class="process-explanation">
+    <h1>Advanced Statistics</h1>
+    <p>Track how your links are performing across the web with <br> our advanced statistics dashboard</p>
 
 
+</section>
 
 
-</div>
+<footer>
+
+</footer>
 
 <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
