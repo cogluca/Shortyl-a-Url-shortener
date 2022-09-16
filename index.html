@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
     <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
 
         html {
             margin-bottom: 0;
-            border:none;
+            border: none;
         }
 
-        body{
-            margin-left:0;
+        body {
+            margin-left: 0;
             margin-right: 0;
             margin-bottom: 0;
             /*noinspection CssInvalidPropertyValue*/
-            background-image: linear-gradient(180deg,  white 0%,white 25%,#F0F1F6 25%,#F0F1F6 100%);
+            background-image: linear-gradient(180deg, white 0%, white 31%, #F0F1F6 31%, #F0F1F6 100%);
         }
 
         .attribution {
@@ -90,6 +91,7 @@
             padding: 0.3rem;
             border-radius: 8px;
             color: white;
+            border: none;
         }
 
         @media (min-width: 850px) {
@@ -100,14 +102,18 @@
         }
 
         .body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-flow: row wrap;
             align-items: center;
             column-gap: 20px;
             row-gap: 40px;
             height: 100%;
-            margin: 0;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 1em;
+            margin-bottom: 2em;
             border: 0;
+            justify-content: center;
             /*noinspection CssInvalidPropertyValue*/
 
         }
@@ -116,7 +122,6 @@
             align-content: center;
             justify-items: center;
             justify-content: center;
-            padding-left: 5em;
         }
 
         .main-section-row-hero-text h1 {
@@ -131,15 +136,21 @@
             text-align: center;
         }
 
+        .action-area {
+
+            margin-top: 3em;
+            margin-bottom: 3em;
+
+        }
+
+
         .link-shortener-text-area {
             display: flex;
+            flex-flow: row wrap;
             background-image: url("./images/bg-boost-desktop.svg");
             background-color: rebeccapurple;
             padding: 30px;
             justify-content: space-evenly;
-            grid-column-start: 1;
-            grid-column-end: 3;
-            grid-auto-flow: column;
             margin-left: 20%;
             margin-right: 20%;
             border-radius: 10px;
@@ -162,51 +173,27 @@
         .process-explanation {
             justify-content: center;
             text-align: center;
-            display: grid;
-            grid-template-rows: 1fr 1fr;
-            grid-gap: 20px;
+            display: flex;
+            flex-flow: row wrap;
             padding-left: 5em;
             padding-right: 5em;
 
         }
 
         .explanation-cards {
-            display: grid;
-            grid-template-columns: 10fr 1fr 10fr 1fr 10fr;
-            flex-flow: row;
+            display: flex;
             justify-content: space-evenly;
-            margin-bottom: 8em;
-            margin-top: -5em;
-
-
+            margin-top: 3em;
+            margin-bottom: 3em;
         }
 
-        .statistics {
-            margin-top: 5em;
-            margin-bottom: 13em;
-        }
-        .explanation-cards>div{
-            position:relative;
-            height:10em;
-        }
-        .explanation-cards>div:before {
-            float: left;
-            width: 50px;
-            height: 51px;
-        }
-        .explanation-cards>div>div{
-            display:inline-block;
-            height:50px;
-            width:50px;
-            background:#000;
-            color:#fff;
-        }
+        /*Trick found on the internet to display cards as a stair*/
 
         .explanation-cards .connector {
             background-color: darkturquoise;
             align-self: center;
-            width: 50px;
-            height: 8px;
+            width: 3em;
+            height: 0.5em;
         }
 
         .explanation-cards .card {
@@ -232,8 +219,6 @@
             padding-right: 2em;
             padding-left: 2em;
             background-color: white;
-
-
         }
 
         .explanation-cards .expl3 {
@@ -263,7 +248,6 @@
             margin-top: -4em;
             border-radius: 50%;
             border-width: thin;
-
         }
 
         .fully-custom-img {
@@ -274,9 +258,7 @@
             margin-top: -4em;
             border-radius: 50%;
             border-width: thin;
-            width: 10%;
             height: auto;
-
         }
 
         .explanation-cards .expl3 {
@@ -290,7 +272,6 @@
             padding-bottom: 1.5em;
             justify-content: center;
             text-align: center;
-            justify-content: center;
             color: white;
         }
 
@@ -310,10 +291,7 @@
             flex-flow: row;
             background-color: black;
             color: white;
-            padding-left: 5em;
-            padding-right: 5em;
-            padding-top: 2.5em;
-            padding-bottom: 2.5em;
+            padding: 2.5em 5em;
             justify-content: space-evenly;
             margin-bottom: 0;
             overflow: hidden;
@@ -335,34 +313,122 @@
             padding-top: 1em;
         }
 
+        /* Hamburger menu machinations */
+
+
+        /* Responsiveness */
+
+        @media (max-width: 600px) {
+
+            body {
+                background-image: linear-gradient(180deg, white 0%, white 23%, #F0F1F6 23%, #F0F1F6 100%);
+            }
+
+            .body {
+                flex-flow: column;
+                justify-content: center;
+                margin-bottom: 3em;
+
+            }
+
+            .main-section-row-working {
+                justify-items: center;
+                justify-content: center;
+            }
+
+
+            .action-area {
+                display: flex;
+                flex-flow: row wrap;
+                margin-bottom: 3em;
+
+            }
+
+            .illustration-working {
+                width: 100%;
+                height: auto;
+
+            }
+
+            .explanation-cards {
+                display: flex;
+                flex-flow: column wrap;
+                margin-top: 3em;
+                margin-bottom: 3em;
+            }
+
+            .explanation-cards .expl1 {
+                margin-bottom: 1.3em;
+            }
+
+            .explanation-cards .expl2 {
+                margin-top: 1.3em;
+                margin-bottom: 1.2em;
+                height: 17em;
+            }
+
+            .explanation-cards .expl3 {
+                margin-top: 1.3em;
+            }
+
+
+            .connector {
+                transform: rotate(90deg);
+            }
+
+            .footer-container {
+
+                display: flex;
+                flex-flow: column;
+                justify-items: center;
+                text-align: center;
+            }
+
+            .footer-container div {
+                text-align: center;
+                align-items: center;
+                align-content: center;
+
+            }
+
+            .footer-container div ul {
+                padding-left: 0;
+            }
+
+            /* hamburger menu machinations */
+
+
+        }
 
 
     </style>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
 </head>
 <body>
-<nav class="nav-bar">
-    <div class="left-nav-container">
-        <a href="index.html"> <img src="./images/logo.svg" alt="Website Logo"/></a>
-        <ul class="menu-items">
-            <li>
-                <a href="index.html">Features</a>
+
+<nav class="navbar nav-bar navbar-expand-lg navbar-light bg-white ">
+    <a class="navbar-brand" href="index.html"> <img src="./images/logo.svg" alt="Website Logo"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="left-nav-container collapse navbar-collapse">
+
+        <ul class="menu-items navbar-nav mr-auto mt-2 mt-lg-0 flex-row">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Features</a>
             </li>
-            <li>
-                <a href="index.html">Pricing</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Pricing</a>
             </li>
-            <li>
-                <a href="index.html">Resources</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Resources</a>
             </li>
         </ul>
+        <button class="button">Login</button>
+        <button class="button">Sign up</button>
     </div>
-    <ul class="sign-in">
-        <li>
-            <a href="index.html">Login</a>
-        </li>
-        <li>
-            <a class="button" href="index.html"> Signup </a>
-        </li>
-    </ul>
+
 </nav>
 
 <section class="body">
@@ -371,18 +437,22 @@
         <p>Build your brand's recognitionand get detailed <br> insights on how your links are performing</p>
     </div>
     <div class="main-section-row-working">
-        <img src="images/illustration-working.svg"/>
+        <img class="illustration-working" src="images/illustration-working.svg"/>
     </div>
+
+</section>
+
+<section class="action-area">
     <div class="link-shortener-text-area">
 
-            <input type="text" placeholder="Shorten a link here"/>
+        <input type="text" placeholder="Shorten a link here"/>
 
         <button>Shorten</button>
     </div>
 </section>
 
 <section class="process-explanation">
-    <div class="statistics description">
+    <div class="statistics">
         <h1>Advanced Statistics</h1>
         <p>Track how your links are performing across the web with <br> our advanced statistics dashboard</p>
     </div>
@@ -398,7 +468,7 @@
         <div class="card expl2">
             <img class="detailed-records-img" src="images/icon-detailed-records.svg">
             <h1>Detailed Records</h1>
-            <p>Gaininsights into who is clicking your links. Knowing when and where people engage with your content
+            <p>Gain insights into who is clicking your links. Knowing when and where people engage with your content
                 helps inform better decisions.</p>
         </div>
         <div class="connector"></div>
