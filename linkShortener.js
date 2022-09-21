@@ -83,7 +83,7 @@ function shortenLink(event) {
 
 async function copyShortenedLink() {
 
-    const shortenedLinkText = document.getElementsByClassName("shortened-link")[0].querySelector("p").innerText;
+    const shortenedLinkText = document.getElementsByClassName("shortened-url")[0].textContent;
     await navigator.clipboard.writeText(shortenedLinkText);
 
 }
