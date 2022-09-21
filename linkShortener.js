@@ -1,35 +1,3 @@
-async function shortenLink() {
-
-    const urlValue = document.querySelector("input").value;
-    let ok;
-
-    try {
-        //https://api.shrtco.de/v2/shorten?url=javatpoint.com/how-to-call-javascript-function-in-html
-
-        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript`).then((response) => response.json()).then((responseJSON) => {
-            console.log(responseJSON);
-            console.log(responseJSON.result);
-            return createShortenedLinkCard(responseJSON.result.full_short_link);
-                });
-        console.log(returnedResponse);
-
-
-    } catch
-        (exception) {
-        console.log(exception);
-    }
-
-
-}
-
-async function copyShortenedLink() {
-
-    const shortenedLinkText = document.getElementsByClassName("shortened-link")[0].querySelector("p").innerText;
-    await navigator.clipboard.writeText(shortenedLinkText);
-
-}
-
-
 async function createShortenedLinkCard(shortenedUrl) {
 
     const urlValue = document.querySelector("input").value;
@@ -60,9 +28,44 @@ async function createShortenedLinkCard(shortenedUrl) {
 
     document.getElementsByClassName("link-shortener-text-area")[0].appendChild(externalDiv);
 
-    return document.contains(externalDiv) ?  1 : 2;
+    return document.contains(externalDiv) ? 1 : 2;
 
 }
+
+function shortenLink(event) {
+
+    event.preventDefault();
+
+    const urlValue = document.querySelector("input").value;
+    let ok;
+
+    try {
+        //https://api.shrtco.de/v2/shorten?url=javatpoint.com/how-to-call-javascript-function-in-html
+
+        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript`).then((response) => response.json()).then((responseJSON) => {
+            console.log(responseJSON);
+            console.log(responseJSON.result);
+            return createShortenedLinkCard(responseJSON.result.full_short_link);
+        });
+
+
+    } catch
+        (exception) {
+        console.log(exception);
+    }
+
+
+}
+
+async function copyShortenedLink() {
+
+    const shortenedLinkText = document.getElementsByClassName("shortened-link")[0].querySelector("p").innerText;
+    await navigator.clipboard.writeText(shortenedLinkText);
+
+}
+
+
+
 
 
 
