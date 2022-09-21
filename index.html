@@ -142,6 +142,8 @@
 
             margin-top: 3em;
             margin-bottom: 3em;
+            justify-items: center;
+            justify-content: center;
 
         }
 
@@ -166,7 +168,12 @@
             padding: 10px;
         }
 
-        .link-shortener-text-area button {
+        form{
+            width: 100%;
+            display: flex;
+        }
+
+        button {
             border-radius: 10px;
             background-color: darkturquoise;
             color: white;
@@ -346,6 +353,8 @@
 
             }
 
+
+
             .illustration-working {
                 width: 100%;
                 height: auto;
@@ -413,6 +422,33 @@
 
         }
 
+        /* Appended shortened link area styling */
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+
+        .external-div .shortened-url {
+            color: darkturquoise;
+        }
+
+        .external-div {
+            display: flex;
+            flex-flow: row;
+            background-color: white;
+            justify-items: center;
+            justify-content: space-evenly;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0.5em 10em;
+            padding: 0.3em;
+        }
+
+
+
 
     </style>
 </head>
@@ -459,7 +495,7 @@
 <section class="action-area">
     <div class="link-shortener-text-area">
         <form>
-            <input id="urlShortenerTextArea" type="text" placeholder="Shorten a link here"/>
+            <input id="urlShortenerTextArea" type="text" placeholder="Shorten a link here" required/>
 
             <button onclick="
                 shortenLink(event)">Shorten

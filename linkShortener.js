@@ -6,15 +6,24 @@ async function createShortenedLinkCard(shortenedUrl) {
     externalDiv.className = "external-div";
     const originLinkDiv = document.createElement("div");
     originLinkDiv.className = "originLinkDiv";
+    originLinkDiv.style.display = "flex";
+    originLinkDiv.style.alignContent = "center";
+    originLinkDiv.style.alignItems = "center";
+    originLinkDiv.style.textAlign = "center";
     const shortenedLink = document.createElement("div");
     shortenedLink.className = "shortenedLink";
 
 
     const originalLinkText = document.createElement("p");
+    originalLinkText.className = "original-link";
+    originalLinkText.style.marginBottom = 0;
     originalLinkText.innerText = urlValue;
     originLinkDiv.appendChild(originalLinkText);
 
     const shortenedUrlText = document.createElement("p");
+    shortenedUrlText.className = "shortened-url";
+    shortenedUrlText.style.color = "darkturquoise";
+    shortenedUrlText.style.marginBottom = 0;
     shortenedUrlText.innerText = shortenedUrl;
     shortenedLink.appendChild(shortenedUrlText);
 
@@ -24,13 +33,21 @@ async function createShortenedLinkCard(shortenedUrl) {
     copyButton.setAttribute("onClick", "javascript: copyShortenedLink();");
 
 
-    externalDiv.append(originLinkDiv, shortenedUrl, copyButton);
+    externalDiv.append(originLinkDiv, shortenedLink, copyButton);
 
-    document.getElementsByClassName("link-shortener-text-area")[0].appendChild(externalDiv);
+    document.getElementsByClassName("action-area")[0].appendChild(externalDiv);
 
     return document.contains(externalDiv) ? 1 : 2;
 
 }
+
+
+
+function removeHttp(url) {
+    return url.replace(/^https?:\/\//, '');
+}
+
+
 
 function shortenLink(event) {
 
@@ -39,10 +56,17 @@ function shortenLink(event) {
     const urlValue = document.querySelector("input").value;
     let ok;
 
+    if(urlValue === '') {
+        const textInputArea = document.getElementById("urlShortenerTextArea");
+        return;
+    }
+
     try {
         //https://api.shrtco.de/v2/shorten?url=javatpoint.com/how-to-call-javascript-function-in-html
 
-        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript`).then((response) => response.json()).then((responseJSON) => {
+        const trimmedUrl = removeHttp(urlValue);
+
+        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`).then((response) => response.json()).then((responseJSON) => {
             console.log(responseJSON);
             console.log(responseJSON.result);
             return createShortenedLinkCard(responseJSON.result.full_short_link);
