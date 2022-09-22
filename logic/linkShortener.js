@@ -1,4 +1,4 @@
-async function createShortenedLinkCard(shortenedUrl) {
+function createShortenedLinkCard(shortenedUrl) {
 
     const urlValue = document.querySelector("input").value;
 
@@ -65,6 +65,7 @@ function shortenLink(event) {
 
         const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`,{
             mode: "cors",
+            method: "GET",
 
         }).then((response) => response.json()).then((responseJSON) => {
             console.log(responseJSON);
