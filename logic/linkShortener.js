@@ -66,6 +66,8 @@ function shortenLink(event) {
         const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`,{
             mode: "cors",
             method: "GET",
+            redirect: "follow",
+
 
         }).then((response) => response.json()).then((responseJSON) => {
             console.log(responseJSON);
