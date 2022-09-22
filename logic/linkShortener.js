@@ -42,11 +42,9 @@ async function createShortenedLinkCard(shortenedUrl) {
 }
 
 
-
 function removeHttp(url) {
     return url.replace(/^https?:\/\//, '');
 }
-
 
 
 function shortenLink(event) {
@@ -55,7 +53,7 @@ function shortenLink(event) {
 
     const urlValue = document.querySelector("input").value;
 
-    if(urlValue === '') {
+    if (urlValue === '') {
         console.log("Tried to shorten empty url");
         return;
     }
@@ -65,10 +63,16 @@ function shortenLink(event) {
 
         const trimmedUrl = removeHttp(urlValue);
 
-        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`).then((response) => response.json()).then((responseJSON) => {
+        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`,{
+            mode: "cors",
+
+        }).then((response) => response.json()).then((responseJSON) => {
             console.log(responseJSON);
-            console.log(responseJSON.result);
-            return createShortenedLinkCard(responseJSON.result.full_short_link);
+            if (responseJSON.error_code === 2) {
+                console.log("shrtCode declared it an invalid link");
+            } else {
+                return createShortenedLinkCard(responseJSON.result.full_short_link);
+            }
         });
 
 
