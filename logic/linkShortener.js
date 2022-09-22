@@ -54,10 +54,9 @@ function shortenLink(event) {
     event.preventDefault();
 
     const urlValue = document.querySelector("input").value;
-    let ok;
 
     if(urlValue === '') {
-        const textInputArea = document.getElementById("urlShortenerTextArea");
+        console.log("Tried to shorten empty url");
         return;
     }
 
