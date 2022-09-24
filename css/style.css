@@ -136,7 +136,7 @@ nav li a:hover {
 .link-shortener-text-area {
     display: flex;
     flex-flow: row wrap;
-    background-image: url("./images/bg-boost-desktop.svg");
+    background-image: url("../images/bg-boost-desktop.svg");
     background-color: rebeccapurple;
     padding: 30px;
     justify-content: space-evenly;
@@ -262,7 +262,7 @@ button {
 
 .Call-To-Action {
     background-color: rebeccapurple;
-    background-image: url("./images/bg-boost-desktop.svg");
+    background-image: url("../images/bg-boost-desktop.svg");
     padding-top: 1.5em;
     padding-bottom: 1.5em;
     justify-content: center;
