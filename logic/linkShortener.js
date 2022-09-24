@@ -61,8 +61,11 @@ function shortenLink(event) {
 
     const urlValue = document.querySelector("input").value;
 
-    if (urlValue === '') {
+    if (urlValue === '' || urlValue === 'Shorten a link here') {
         console.log("Tried to shorten empty url");
+        const inputField = document.querySelector("input");
+        inputField.style.border = "3px solid red";
+        inputField.value = "You forgot to add a link !";
         return;
     }
 
@@ -76,6 +79,7 @@ function shortenLink(event) {
             redirect: "follow",
 
         }).then((response) => response.json()).then((responseJSON) => {
+
             console.log(responseJSON);
 
             if (responseJSON.hasOwnProperty("error_code")) {

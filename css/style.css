@@ -413,10 +413,6 @@ button {
 
 /* Appended shortened link area styling */
 
-input:invalid {
-    border: 1px solid red;
-}
-
 
 .external-div .shortened-url {
     color: darkturquoise;
