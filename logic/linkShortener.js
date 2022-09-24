@@ -1,3 +1,11 @@
+
+async function copyShortenedLink() {
+
+    const shortenedLinkText = document.getElementsByClassName("shortened-url")[0].textContent;
+    await navigator.clipboard.writeText(shortenedLinkText);
+
+}
+
 function createShortenedLinkCard(shortenedUrl) {
 
     const urlValue = document.querySelector("input").value;
@@ -37,12 +45,12 @@ function createShortenedLinkCard(shortenedUrl) {
 
     document.getElementsByClassName("action-area")[0].appendChild(externalDiv);
 
-    return document.contains(externalDiv) ? 1 : 2;
+    return document.contains(externalDiv);
 
 }
 
 
-function removeHttp(url) {
+function removeHttpScheme(url) {
     return url.replace(/^https?:\/\//, '');
 }
 
@@ -61,21 +69,70 @@ function shortenLink(event) {
     try {
         //https://api.shrtco.de/v2/shorten?url=javatpoint.com/how-to-call-javascript-function-in-html
 
-        const trimmedUrl = removeHttp(urlValue);
+        const trimmedUrl = removeHttpScheme(urlValue);
 
-        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`,{
+        const returnedResponse = fetch(`https://api.shrtco.de/v2/shorten?url=${trimmedUrl}`, {
             mode: "cors",
             method: "GET",
             redirect: "follow",
 
-
         }).then((response) => response.json()).then((responseJSON) => {
             console.log(responseJSON);
-            if (responseJSON.error_code === 2) {
-                console.log("shrtCode declared it an invalid link");
-            } else {
+
+            if (responseJSON.hasOwnProperty("error_code")) {
+
+                switch (responseJSON.error_code) {
+
+                    case 1:
+                        console.log("No URL specified (\"url\" parameter is empty)");
+                        return;
+
+                    case 2:
+                        console.log("Invalid URL submitted");
+                        return;
+
+                    case 3:
+                        console.log("Rate limit reached. Wait a second and try again");
+                        return;
+
+                    case 4:
+                        console.log("IP-Address has been blocked because of violating our terms of service");
+                        return;
+
+                    case 5:
+                        console.log("shrtcode code (slug) already taken/in use");
+                        return;
+
+                    case 6:
+                        console.log("Unknown error");
+                        return;
+
+                    case 7:
+                        console.log("No code specified (\"code\" parameter is empty)");
+                        return;
+
+                    case 8:
+                        console.log("Invalid code submitted (code not found/there is no such short-link)");
+                        return;
+
+                    case 9:
+                        console.log("Missing required parameters");
+                        return;
+
+                    case 10:
+                        console.log("Trying to shorten a disallowed Link");
+                        return;
+
+                }
+            }
+
+            if(responseJSON.result.hasOwnProperty("full_short_link")){
                 return createShortenedLinkCard(responseJSON.result.full_short_link);
             }
+            else{
+                console.log("Unexpected error with Json response format");
+            }
+
         });
 
 
@@ -87,12 +144,7 @@ function shortenLink(event) {
 
 }
 
-async function copyShortenedLink() {
 
-    const shortenedLinkText = document.getElementsByClassName("shortened-url")[0].textContent;
-    await navigator.clipboard.writeText(shortenedLinkText);
-
-}
 
 
 
