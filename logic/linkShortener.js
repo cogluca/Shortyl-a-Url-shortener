@@ -67,7 +67,6 @@ function shortenLink(event) {
     }
 
     try {
-        //https://api.shrtco.de/v2/shorten?url=javatpoint.com/how-to-call-javascript-function-in-html
 
         const trimmedUrl = removeHttpScheme(urlValue);
 
