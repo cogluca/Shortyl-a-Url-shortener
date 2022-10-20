@@ -38,7 +38,7 @@ function createShortenedLinkCard(shortenedUrl) {
     const copyButton = document.createElement("button");
     copyButton.innerText = "Copy!";
     copyButton.className = "copyButton";
-    copyButton.setAttribute("onClick", "javascript: copyShortenedLink();");
+    copyButton.onclick = copyShortenedLink;
 
 
     externalDiv.append(originLinkDiv, shortenedLink, copyButton);
@@ -64,7 +64,7 @@ function shortenLink(event) {
     if (urlValue === '' || urlValue === 'Shorten a link here') {
         console.log("Tried to shorten empty url");
         const inputField = document.querySelector("input");
-        inputField.style.border = "3px solid red";
+        inputField.style.border = "1px solid red";
         inputField.value = "You forgot to add a link !";
         return;
     }
